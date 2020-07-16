@@ -33,7 +33,9 @@ TAM对TSM做了一个泛化。TAM的计算公式为：
 其中r为当前帧能够看到的前后帧的数量。y_t为第t帧的特征图。w_j为一个一维向量，其长度与y_t的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
 
 TSM即为TAM的一个特例。比如，如果特征图$y$的通道数为8时，那么当
+
 ![sc](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/specialcase.JPG)
+
 时，TAM即退化为partial shift 1/2的TSM。
 
 ![TAM实现](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/TAM.jpg)
