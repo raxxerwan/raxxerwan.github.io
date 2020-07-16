@@ -30,9 +30,9 @@ TAM对TSM做了一个泛化。TAM的计算公式为：
 
 ![TAM公式](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/TAM_form.JPG)
 
-其中r为当前帧能够看到的前后帧的数量。<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>为第t帧的特征图。<a href="https://www.codecogs.com/eqnedit.php?latex=w_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>为一个一维向量，其长度与<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
+其中r为当前帧能够看到的前后帧的数量。<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>为第t帧的特征图。<a href="https://www.codecogs.com/eqnedit.php?latex=w_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>为一个一维向量，其长度与<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数一致。可以发现其实<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w_j&space;\bigotimes&space;y_{t&space;&plus;j}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w_j&space;\bigotimes&space;y_{t&space;&plus;j}" title="w_j \bigotimes y_{t +j}" /></a>就是对特征图<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;y_{t&space;&plus;j}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;y_{t&space;&plus;j}" title="y_{t +j}" /></a>做一个1 * 1的depth wise卷积，卷积核为<a href="https://www.codecogs.com/eqnedit.php?latex=w_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>。
 
-TSM即为TAM的一个特例。比如，如果特征图<a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>的通道数为8时，那么当
+TSM即为TAM的一个特例。比如，如果特征图<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数为8时，那么当
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=r=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r=2" title="r=2" /></a>
 
@@ -45,7 +45,7 @@ TSM即为TAM的一个特例。比如，如果特征图<a href="https://www.codec
 时，TAM即退化为partial shift 1/2的TSM。
 
 ![TAM实现](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/TAM.jpg)
-TAM可以用1 * 1的depth wise卷积来实现。
+TAM可以用r个1 * 1的depth wise卷积核来实现。
 
 
 
