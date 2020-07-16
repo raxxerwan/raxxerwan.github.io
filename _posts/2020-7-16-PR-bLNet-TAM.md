@@ -30,9 +30,9 @@ TAM对TSM做了一个泛化。TAM的计算公式为：
 
 ![TAM公式](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/TAM_form.JPG)
 
-其中r为当前帧能够看到的前后帧的数量。y_t为第t帧的特征图。w_j为一个一维向量，其长度与y_t的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
+其中r为当前帧能够看到的前后帧的数量。<img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>为第t帧的特征图。<img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>为一个一维向量，其长度与<img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
 
-TSM即为TAM的一个特例。比如，如果特征图$y$的通道数为8时，那么当
+TSM即为TAM的一个特例。比如，如果特征图<img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>的通道数为8时，那么当
 
 <img src="https://latex.codecogs.com/gif.latex?r=2," title="r=2," /></a>
 
