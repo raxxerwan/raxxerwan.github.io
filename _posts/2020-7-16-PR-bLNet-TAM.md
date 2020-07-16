@@ -30,17 +30,17 @@ TAM对TSM做了一个泛化。TAM的计算公式为：
 
 ![TAM公式](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/TAM_form.JPG)
 
-其中r为当前帧能够看到的前后帧的数量。<img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>为第t帧的特征图。<img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>为一个一维向量，其长度与<img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
+其中r为当前帧能够看到的前后帧的数量。<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>为第t帧的特征图。<a href="https://www.codecogs.com/eqnedit.php?latex=w_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_t" title="w_t" /></a>为一个一维向量，其长度与<a href="https://www.codecogs.com/eqnedit.php?latex=y_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_t" title="y_t" /></a>的通道数一致。这其实就是一个1 * 1的depth wise的卷积。
 
-TSM即为TAM的一个特例。比如，如果特征图<img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>的通道数为8时，那么当
+TSM即为TAM的一个特例。比如，如果特征图<a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>的通道数为8时，那么当
 
-<img src="https://latex.codecogs.com/gif.latex?r=2," title="r=2," /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=r=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r=2" title="r=2" /></a>
 
-<img src="https://latex.codecogs.com/gif.latex?w_1=[1,1,0,0,0,0,0,0]," title="w_1=[1,1,0,0,0,0,0,0]," /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=w_1=[1,1,0,0,0,0,0,0]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_1=[1,1,0,0,0,0,0,0]" title="w_1=[1,1,0,0,0,0,0,0]" /></a>
 
-<img src="https://latex.codecogs.com/gif.latex?w_0=[0,0,0,0,1,1,1,1]," title="w_0=[0,0,0,0,1,1,1,1]," /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=w_0=[0,0,0,0,1,1,1,1]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_0=[0,0,0,0,1,1,1,1]" title="w_0=[0,0,0,0,1,1,1,1]" /></a>
 
-<img src="https://latex.codecogs.com/gif.latex?w_{-1}=[0,0,1,1,0,0,0,0]" title="w_{-1}=[0,0,1,1,0,0,0,0]" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=w_{-1}=[0,0,1,1,0,0,0,0]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{-1}=[0,0,1,1,0,0,0,0]" title="w_{-1}=[0,0,1,1,0,0,0,0]" /></a>
 
 时，TAM即退化为partial shift 1/2的TSM。
 
@@ -53,7 +53,7 @@ TAM可以用1 * 1的depth wise卷积来实现。
 
 ## 训练
 
-这篇文章用了一种很有意思的训练方式。文章先用$8\times2$的输入帧数，0.01的lr对模型训练50个epoch；然后，再把输入改成$16\times2$，0.01的initial lr（在Something-Something上是0.01，在Kinetics400上是0.005）训练25个epoch，这25个epoch期间，每10个epoch就将lr减少为之前的$1/10$。这相当于先用稀疏的输入帧数进行训练，然后再用稠密输入进行finetune。目的是为了减少训练时间。
+这篇文章用了一种很有意思的训练方式。文章先用8 * 2的输入帧数，0.01的lr对模型训练50个epoch；然后，再把输入改成16 * 2，0.01的initial lr（在Something-Something上是0.01，在Kinetics400上是0.005）训练25个epoch，这25个epoch期间，每10个epoch就将lr减少为之前的1/10。这相当于先用稀疏的输入帧数进行训练，然后再用稠密输入进行finetune。目的是为了减少训练时间。
 
 ## Inference
 
