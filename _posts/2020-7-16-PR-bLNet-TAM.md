@@ -34,7 +34,13 @@ TAM对TSM做了一个泛化。TAM的计算公式为：
 
 TSM即为TAM的一个特例。比如，如果特征图$y$的通道数为8时，那么当
 
-![sc](https://raw.githubusercontent.com/raxxerwan/raxxerwan.github.io/master/images/2020-7-16-PR-bLNet-TAM/specialcase.JPG)
+<img src="https://latex.codecogs.com/gif.latex?r=2," title="r=2," /></a>
+
+<img src="https://latex.codecogs.com/gif.latex?w_1=[1,1,0,0,0,0,0,0]," title="w_1=[1,1,0,0,0,0,0,0]," /></a>
+
+<img src="https://latex.codecogs.com/gif.latex?w_0=[0,0,0,0,1,1,1,1]," title="w_0=[0,0,0,0,1,1,1,1]," /></a>
+
+<img src="https://latex.codecogs.com/gif.latex?w_{-1}=[0,0,1,1,0,0,0,0]" title="w_{-1}=[0,0,1,1,0,0,0,0]" /></a>
 
 时，TAM即退化为partial shift 1/2的TSM。
 
